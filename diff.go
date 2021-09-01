@@ -62,21 +62,21 @@ func Files(file1, file2 string) (different bool, err error) {
 	defer f2.Close()
 
 	// Compare the size of the files.
-	n1, err := f1.Seek(0, os.SEEK_END)
+	n1, err := f1.Seek(0, io.SeekEnd)
 	if err != nil {
 		return true, err
 	}
-	n2, err := f2.Seek(0, os.SEEK_END)
+	n2, err := f2.Seek(0, io.SeekEnd)
 	if err != nil {
 		return true, err
 	}
 	if n1 != n2 {
 		return true, nil
 	}
-	if _, err := f1.Seek(0, os.SEEK_SET); err != nil {
+	if _, err := f1.Seek(0, io.SeekStart); err != nil {
 		return true, err
 	}
-	if _, err := f2.Seek(0, os.SEEK_SET); err != nil {
+	if _, err := f2.Seek(0, io.SeekStart); err != nil {
 		return true, err
 	}
 
