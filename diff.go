@@ -10,7 +10,7 @@ import (
 const chunkSize = 4096
 
 // Readers compares the contents of two io.Readers.
-// The return value of different is true if and only if there are no errors
+// The return value of different is false if and only if there are no errors
 // in reading r1 and r2 (io.EOF excluded) and r1 and r2 are
 // byte-for-byte identical.
 func Readers(r1, r2 io.Reader) (different bool, err error) {
